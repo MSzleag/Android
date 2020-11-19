@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Car Note</string>
+    <string name="go_to_tank_form_button">Go to tank up</string>
+    <string name="make">Make</string>
+    <string name="model">Model</string>
+    <string name="color">Color</string>
+    <string name="date">Date</string>
+    <string name="mileage">Mileage</string>
+    <string name="liters">Liters added</string>
+    <string name="cost">Cost</string>
+    <string name="confirm">Confirm</string>
+    <string name="new_tankup">New \nTank Up</string>
+    <string name="new_collision">New Collision</string>
+    <string name="new_repair">New \nRepair</string>
+    <string name="new_car">New \nCar</string>
+    <string name="wrong_mileage">Mileage must be bigger than last time!</string>
+    <string name="zero_milleage">Mileage must be given</string>
+    <string name="minus_mileage">Mileage must be positive</string>
+    <string name="zero_liters">Liters must be given</string>
+    <string name="zero_cost">Cost must be given</string>
+    <string name="minus_liters">Liters must be positive!</string>
+    <string name="minus_cost">Cost must be positive</string>
+</resources>
