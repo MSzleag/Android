@@ -60,6 +60,7 @@ public class MainMenuActivity extends AppCompatActivity {
     private String userEmail;
     private Boolean zero = false;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +77,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
     private void setTextsAndBars() {
         userTextView.setText(getString(R.string.welcome) + firstname);
-        petTextView.setText(getString(R.string.thats) + petName + getString(R.string.stats));
+        petTextView.setText(getString(R.string.thats)
+                + petName + getString(R.string.stats));
         happyProgressBar.setProgress(happiness);
         hungerProgressBar.setProgress(hunger);
         currentHungerTextView.setText(String.valueOf(hunger));
@@ -104,6 +106,7 @@ public class MainMenuActivity extends AppCompatActivity {
     @OnClick(R.id.arButton)
     public void onArButtonClicked() {
         Intent intent = new Intent(this, ArActivity.class);
+        intent.putExtra(LOGGED_EMAIL, userEmail);
         startActivity(intent);
     }
 
@@ -134,7 +137,8 @@ public class MainMenuActivity extends AppCompatActivity {
                         });
                     }
                 } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),
+                            e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         };

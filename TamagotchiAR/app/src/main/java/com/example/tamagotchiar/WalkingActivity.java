@@ -47,6 +47,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         database = new DatabaseHelper(this);
         userEmail = getIntent().getStringExtra(LOGGED_EMAIL);
         zero = getIntent().getExtras().getBoolean(NEW_WALK);
+        stepData = database.getStepsFromDatabase(userEmail);
         if (zero)
             stepData = 0;
 
@@ -83,15 +84,15 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor == mStepCounter) {
-            stepData = database.getStepsFromDatabase(userEmail);
             stepCount = (int) event.values[0] + stepData;
 
+            database.updateStepsInDatabase(userEmail,stepCount);
             stepsTakenTextView.setText(String.valueOf(stepCount));
             progressCircular.setProgress((float) stepCount);
 
-            if (stepCount >= 75) {
+            if (stepCount >= 2500) {
                 walkTextView.setText(R.string.walked_as_pet_need);
-
+                if(stepCount == 2500){
                     int happiness = database.getHappinessFromDatabase(userEmail);
                     happiness +=80;
                     if (happiness > 120)
@@ -100,7 +101,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                     int coins = database.getCoinsFromDatabase(userEmail);
                     coins +=80;
                     database.updateCoinsInDatabase(userEmail,coins);
-
+                }
                 Toast.makeText(getApplicationContext(), R.string.walked_toast,Toast.LENGTH_LONG).show();
             }
             else

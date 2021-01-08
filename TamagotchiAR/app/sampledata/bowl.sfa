@@ -89,7 +89,7 @@
     file: 'sampledata/bowl.obj',
     name: 'bowl',
     recenter: 'root',
-    scale: 7.9999999999999996e-06,
+    scale: 0.9999999999999996e-06,
   },
   version: '0.54:2',
 }

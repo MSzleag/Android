@@ -2,6 +2,8 @@ package com.example.tamagotchiar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -39,8 +41,10 @@ public class LoginActivity extends AppCompatActivity {
     public void onLoginButtonClicked() {
         String emailText = emailEditText.getText().toString();
         String passwordText = passwordEditText.getText().toString();
-        login(emailText,passwordText);
 
+        if(loginValidation()) {
+            login(emailText, passwordText);
+        }
     }
 
 
@@ -52,14 +56,37 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void login(String email, String password) {
-        Boolean isEmailAndPasswordMatch = database.isEmailAndPasswordMatch(email,password);
-        if (isEmailAndPasswordMatch){
-            Intent intent = new Intent(this,MainMenuActivity.class);
-            intent.putExtra(LOGGED_EMAIL,email);
-            startActivity(intent);
-            Toast.makeText(getApplicationContext(), R.string.login_succes,Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(getApplicationContext(), R.string.wrong_email_or_password,Toast.LENGTH_SHORT).show();
+        Boolean isEmailAndPasswordMatch = database
+                .isEmailAndPasswordMatch(email,password);
+
+            if (isEmailAndPasswordMatch){
+                Intent intent = new Intent(this,MainMenuActivity.class);
+                intent.putExtra(LOGGED_EMAIL,email);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(),
+                        R.string.login_succes,Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(getApplicationContext(),
+                        R.string.wrong_email_or_password,Toast.LENGTH_SHORT).show();
+            }
+    }
+
+    public Boolean loginValidation(){
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailEditText.getText().toString()).matches()){
+            emailEditText.setError(getString(R.string.wrong_email));
+            return false;
         }
+        if (TextUtils.isEmpty(emailEditText.getText().toString())){
+            emailEditText.setError(getString(R.string.email_empty));
+            return false;
+        }
+        if (TextUtils.isEmpty(passwordEditText.getText().toString())){
+            passwordEditText.setError(getString(R.string.email_empty));
+            return false;
+        }
+        else
+            return true;
     }
 }
+
+

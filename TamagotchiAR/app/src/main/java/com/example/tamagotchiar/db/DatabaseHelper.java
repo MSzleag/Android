@@ -133,4 +133,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("lastModifiedTime",lastModifiedTime);
         database.update("user",contentValues,"email=?",new String[]{email});
     }
+    public void updateStepsInDatabase(String email, Integer steps){
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("steps",steps);
+        database.update("user",contentValues,"email=?",new String[]{email});
+    }
+
 }
