@@ -86,7 +86,6 @@ public class MainMenuActivity extends AppCompatActivity {
         currentFoodTextView.setText(String.valueOf(food));
         currentCoinsTextView.setText(String.valueOf(coins));
     }
-
     private void setData() {
         firstname = database.getFirstNameFromDatabase(userEmail);
         petName = database.getPetNameFromDatabase(userEmail);

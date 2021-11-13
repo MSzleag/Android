@@ -65,7 +65,6 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         }
 
     }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -73,7 +72,6 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
             sensorManager.registerListener(this, mStepCounter, SensorManager.SENSOR_DELAY_NORMAL);
 
     }
-
     @Override
     protected void onPause() {
         super.onPause();
@@ -84,15 +82,15 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor == mStepCounter) {
-            stepCount = (int) event.values[0] + stepData;
+            stepCount = (int) event.values[0];
 
             database.updateStepsInDatabase(userEmail,stepCount);
             stepsTakenTextView.setText(String.valueOf(stepCount));
             progressCircular.setProgress((float) stepCount);
 
-            if (stepCount >= 2500) {
+            if (stepCount >= 6000) {
                 walkTextView.setText(R.string.walked_as_pet_need);
-                if(stepCount == 2500){
+                if(stepCount == 6300){
                     int happiness = database.getHappinessFromDatabase(userEmail);
                     happiness +=80;
                     if (happiness > 120)
@@ -101,8 +99,9 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                     int coins = database.getCoinsFromDatabase(userEmail);
                     coins +=80;
                     database.updateCoinsInDatabase(userEmail,coins);
+                    Toast.makeText(getApplicationContext(), R.string.walked_toast,Toast.LENGTH_LONG).show();
                 }
-                Toast.makeText(getApplicationContext(), R.string.walked_toast,Toast.LENGTH_LONG).show();
+
             }
             else
                 walkTextView.setText(R.string.didn_walk_as_pet_need);

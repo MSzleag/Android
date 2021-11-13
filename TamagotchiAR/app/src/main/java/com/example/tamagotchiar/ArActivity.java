@@ -93,7 +93,7 @@ public class ArActivity extends AppCompatActivity implements Scene.OnUpdateListe
 
     private void createModel(Anchor anchor) {
         ModelRenderable.builder()
-                .setSource(this, R.raw.fox).build().thenAccept(modelRenderable -> placeBowl(modelRenderable, anchor));
+                .setSource(this, R.raw.rabbit_01).build().thenAccept(modelRenderable -> placeBowl(modelRenderable, anchor));
     }
 
 
@@ -107,7 +107,7 @@ public class ArActivity extends AppCompatActivity implements Scene.OnUpdateListe
     private void placeBowl(ModelRenderable modelRenderable, Anchor anchor) {
         AnchorNode anchorNode = new AnchorNode(anchor);
         anchorNode.setRenderable(modelRenderable);
-        anchorNode.setLocalScale(new Vector3(0.01f, 0.01f, 0.01f));
+        //anchorNode.setLocalScale(new Vector3(0.01f, 0.01f, 0.01f));
         arFragment.getArSceneView().getScene().addChild(anchorNode);
 
     }
