@@ -6,7 +6,7 @@
     <string name = "register">Register</string>
     <string name = "first_name">First Name</string>
     <string name = "pet_name">Pet Name</string>
-    <string name = "create_account">Create Account</string>
+    <string name = "create_account">Utwórz konto</string>
     <string name = "register_succes">Registered Successfully</string>
     <string name = "email_exists_in_data">E-mail already exists</string>
     <string name = "wrong_email_or_password">Wrong Email or Password</string>
