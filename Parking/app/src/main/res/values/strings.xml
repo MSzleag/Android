@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Parking</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Hasło</string>
+    <string name="login">Zaloguj</string>
+    <string name="register">Zarejestruj</string>
+    <string name="first_name">Imię</string>
+    <string name="last_name">Nazwisko</string>
+    <string name="create_account">Utwórz Konto</string>
+    <string name="register_succes">Udało się zarejestrować!!</string>
+    <string name="email_exists_in_data">Taki email już istnieje</string>
+    <string name="field_empty">Pole nie może być puste!</string>
+    <string name="wrong_email">Niepoprawny Email</string>
+    <string name="login_succes">Udało się zalogować !!</string>
+    <string name="wrong_email_or_password">Nieprawidłowy Email lub Hasło</string>
+    <string name="konto">Konto</string>
+    <string name="moje_rezerwacje">Moje Rezerwacje</string>
+    <string name="moje_pojazdy">Moje Pojazdy</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+</resources>
